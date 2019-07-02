@@ -46,3 +46,15 @@ class Calculation(APIResource):
     @classmethod
     def properties(cls, **kwargs):
     	return cls.__call_method('properties', **kwargs)
+
+    @classmethod
+    def backtest(cls, **kwargs):
+        return cls.__call_method('backtest', **kwargs)
+
+    @classmethod
+    def portfolio_characteristics(cls, **kwargs):
+        return cls.__call_method('portfolio_characteristics', **kwargs)
+
+    @classmethod
+    def return_statistics(cls, **kwargs):
+        return cls.__call_method('return_statistics', **kwargs)
