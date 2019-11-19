@@ -7,10 +7,21 @@
 # without authorization of EVERYSK TECHNOLOGIES is prohibited.
 #
 ###############################################################################
-from everysk.api_resources.script import Script
-from everysk.api_resources.process import Process
-from everysk.api_resources.portfolio import Portfolio
-from everysk.api_resources.template import Template
-from everysk.api_resources.report import Report
-from everysk.api_resources.datastore import Datastore
-from everysk.api_resources.calculation import Calculation
+from everysk.api_resources.api_resource import (
+    RetrievableAPIResource,
+    ListableAPIResource,
+    DeletableAPIResource,
+    CreateableAPIResource,
+    UpdateableAPIResource
+)
+
+class Datastore(
+    RetrievableAPIResource,
+    ListableAPIResource,
+    DeletableAPIResource,
+    CreateableAPIResource,
+    UpdateableAPIResource
+):
+    @classmethod
+    def class_name(cls):
+        return 'datastore'
