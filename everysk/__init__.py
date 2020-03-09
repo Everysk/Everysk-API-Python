@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# (C) Copyright 2018 EVERYSK TECHNOLOGIES
+# (C) Copyright 2020 EVERYSK TECHNOLOGIES
 #
 # This is an unpublished work containing confidential and proprietary
 # information of EVERYSK TECHNOLOGIES. Disclosure, use, or reproduction

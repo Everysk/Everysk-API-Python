@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# (C) Copyright 2018 EVERYSK TECHNOLOGIES
+# (C) Copyright 2020 EVERYSK TECHNOLOGIES
 #
 # This is an unpublished work containing confidential and proprietary
 # information of EVERYSK TECHNOLOGIES. Disclosure, use, or reproduction
@@ -52,9 +52,17 @@ class Calculation(APIResource):
         return cls.__call_method('backtest', **kwargs)
 
     @classmethod
-    def portfolio_characteristics(cls, **kwargs):
-        return cls.__call_method('portfolio_characteristics', **kwargs)
+    def backtestStatistics(cls, **kwargs):
+        return cls.__call_method('backtest_statistics', **kwargs)
 
     @classmethod
-    def return_statistics(cls, **kwargs):
-        return cls.__call_method('return_statistics', **kwargs)
+    def aggregations(cls, **kwargs):
+        return cls.__call_method('aggregations', **kwargs)
+
+    @classmethod
+    def fundamentals(cls, **kwargs):
+        return cls.__call_method('fundamentals', **kwargs)
+
+    @classmethod
+    def optimizeFMP(cls, **kwargs):
+        return cls.__call_method('optimize_fmp', **kwargs)

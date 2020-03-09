@@ -15,10 +15,10 @@ from everysk.api_resources.api_resource import (
     CreateableAPIResource,
     UpdateableAPIResource
 )
-from everysk.api_resources.process import Process
+from everysk.api_resources.execution import Execution
 from everysk import utils
 
-class Script(
+class Workflow(
     RetrievableAPIResource,
     ListableAPIResource,
     DeletableAPIResource,
@@ -28,7 +28,7 @@ class Script(
 
     @classmethod
     def class_name(cls):
-        return 'script'
+        return 'workflow'
 
     @classmethod
     def run(cls, id, debug_callback=None, **kwargs):
@@ -37,22 +37,22 @@ class Script(
         url = '%s/%s/run' % (cls.class_url(), id)
         response = api_req.post(url, kwargs)
         kwargs = {}
-        proc = utils.to_object(Process, kwargs, response)
-        debug_callback(0, proc)
+        exe = utils.to_object(Execution, kwargs, response)
+        debug_callback(0, exe)
 
         loop_sleep = 1
         loop_max = 700
         loop_count = 0
-        done = ('completed', 'failed', 'timeout')
-        while proc.status not in done:
+        done = ('COMPLETED', 'FAILED', 'TIMEOUT')
+        while exe.status not in done:
             time.sleep(loop_sleep)
-            proc.refresh()
+            exe.refresh()
             loop_count += 1
-            debug_callback(loop_count, proc)
+            debug_callback(loop_count, exe)
             if loop_count > loop_max:
                 raise Exception('max run loop achieved')
         time.sleep(loop_sleep)
         result = None
-        if proc.status in done:
-            result = proc.result
+        if exe.status in done:
+            result = exe.result
         return result

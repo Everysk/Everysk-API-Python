@@ -13,12 +13,12 @@ from everysk.api_resources.api_resource import (
     DeletableAPIResource
 )
 
-class Process(
+class Execution(
     RetrievableAPIResource,
     ListableAPIResource,
     DeletableAPIResource
 ):
     @classmethod
     def class_name(cls):
-        return 'process'
+        return 'execution'
 
