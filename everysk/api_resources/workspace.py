@@ -7,16 +7,24 @@
 # without authorization of EVERYSK TECHNOLOGIES is prohibited.
 #
 ###############################################################################
+import time
 from everysk.api_resources.api_resource import (
     RetrievableAPIResource,
-    ListableAPIResource
+    ListableAPIResource,
+    DeletableAPIResource,
+    CreateableAPIResource,
+    UpdateableAPIResource
 )
+from everysk import utils
 
-class Template(
+class Workspace(
     RetrievableAPIResource,
-    ListableAPIResource
+    ListableAPIResource,
+    DeletableAPIResource,
+    CreateableAPIResource,
+    UpdateableAPIResource
 ):
+
     @classmethod
     def class_name(cls):
-        return 'template'
-
+        return 'workspace'

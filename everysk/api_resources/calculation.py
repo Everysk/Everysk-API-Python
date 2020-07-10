@@ -64,5 +64,13 @@ class Calculation(APIResource):
         return cls.__call_method('fundamentals', **kwargs)
 
     @classmethod
-    def optimizeFMP(cls, **kwargs):
-        return cls.__call_method('optimize_fmp', **kwargs)
+    def daysToUnwind(cls, **kwargs):
+        return cls.__call_method('days_to_unwind', **kwargs)
+
+    @classmethod
+    def sensitivity(cls, **kwargs):
+        return cls.__call_method('sensitivity', **kwargs)
+
+    @classmethod
+    def optimize(cls, **kwargs):
+        return cls.__call_method('optimize', **kwargs)

@@ -9,16 +9,14 @@
 ###############################################################################
 from everysk.api_resources.api_resource import (
     RetrievableAPIResource,
-    ListableAPIResource,
-    DeletableAPIResource
+    ListableAPIResource
 )
 
-class Process(
+class ReportTemplate(
     RetrievableAPIResource,
-    ListableAPIResource,
-    DeletableAPIResource
+    ListableAPIResource
 ):
     @classmethod
     def class_name(cls):
-        return 'process'
+        return 'report_template'
 
