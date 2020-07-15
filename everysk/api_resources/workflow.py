@@ -31,7 +31,7 @@ class Workflow(
         return 'workflow'
 
     @classmethod
-    def run(cls, id, debug_callback=None, **kwargs):
+    def run(cls, id, debug_callback=None, loop_sleep=1, loop_max=700, **kwargs):
         debug_callback = (lambda x, y: None) if (debug_callback is None) else debug_callback
         api_req = utils.create_api_requestor()
         url = '%s/%s/run' % (cls.class_url(), id)
@@ -40,8 +40,8 @@ class Workflow(
         exe = utils.to_object(Execution, kwargs, response)
         debug_callback(0, exe)
 
-        loop_sleep = 1
-        loop_max = 700
+        # loop_sleep = 1
+        # loop_max = 700
         loop_count = 0
         done = ('COMPLETED', 'FAILED', 'TIMEOUT')
         while exe.status not in done:
