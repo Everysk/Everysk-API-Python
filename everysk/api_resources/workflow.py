@@ -33,7 +33,7 @@ class Workflow(
     @classmethod
     def run(cls, id, debug_callback=None, loop_sleep=1, loop_max=700, **kwargs):
         debug_callback = (lambda x, y: None) if (debug_callback is None) else debug_callback
-        api_req = utils.create_api_requestor()
+        api_req = utils.create_api_requestor(kwargs)
         url = '%s/%s/run' % (cls.class_url(), id)
         response = api_req.post(url, kwargs)
         kwargs = {}

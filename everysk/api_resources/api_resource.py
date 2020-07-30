@@ -15,8 +15,8 @@ class APIResource(utils.EveryskObject):
         self.__retrieve_params = retrieve_params    
         return
 
-    def refresh(self):
-        api_req = utils.create_api_requestor()
+    def refresh(self, **kwargs):
+        api_req = utils.create_api_requestor(kwargs)
         url = '%s/%s' % (self.class_url(), self.get('id'))
         kwargs = self.__retrieve_params
         response = api_req.get(url, kwargs)
@@ -46,7 +46,7 @@ class RetrievableAPIResource(APIResource):
 
     @classmethod
     def retrieve(cls, id, **kwargs):
-        api_req = utils.create_api_requestor()
+        api_req = utils.create_api_requestor(kwargs)
         url = '%s/%s' % (cls.class_url(), id)
         response = api_req.get(url, kwargs)
         return utils.to_object(cls, kwargs, response)
@@ -55,7 +55,7 @@ class ListableAPIResource(APIResource):
 
     @classmethod
     def list(cls, **kwargs):
-        api_req = utils.create_api_requestor()
+        api_req = utils.create_api_requestor(kwargs)
         url = cls.class_url()
         response = api_req.get(url, kwargs)
         return utils.to_list(cls, kwargs, response)
@@ -74,8 +74,8 @@ class ListableAPIResource(APIResource):
 
 class DeletableAPIResource(APIResource):
 
-    def delete(self):
-        api_req = utils.create_api_requestor()
+    def delete(self, **kwargs):
+        api_req = utils.create_api_requestor(kwargs)
         url = '%s/%s' % (self.class_url(), self.get('id'))
         response = api_req.delete(url)
         data = response[self.class_name()]
@@ -85,8 +85,8 @@ class DeletableAPIResource(APIResource):
         return self
 
     @classmethod
-    def remove(cls, id):
-        api_req = utils.create_api_requestor()
+    def remove(cls, id, **kwargs):
+        api_req = utils.create_api_requestor(kwargs)
         url = '%s/%s' % (cls.class_url(), id)
         response = api_req.delete(url)
         data = response[cls.class_name()]
@@ -96,7 +96,7 @@ class CreateableAPIResource(APIResource):
 
     @classmethod
     def create(cls, **kwargs):
-        api_req = utils.create_api_requestor()
+        api_req = utils.create_api_requestor(kwargs)
         url = cls.class_url()
         response = api_req.post(url, kwargs)
         return utils.to_object(cls, kwargs, response)
@@ -105,14 +105,14 @@ class UpdateableAPIResource(APIResource):
 
     @classmethod
     def modify(cls, id, **kwargs):
-        api_req = utils.create_api_requestor()
+        api_req = utils.create_api_requestor(kwargs)
         url = '%s/%s' % (cls.class_url(), id)
         response = api_req.put(url, kwargs)
         data = response[cls.class_name()]
         return utils.to_object(cls, kwargs, response)
 
-    def save(self):
-        api_req = utils.create_api_requestor()
+    def save(self, **kwargs):
+        api_req = utils.create_api_requestor(kwargs)
         url = '%s/%s' % (self.class_url(), self.get('id'))
         #response = api_req.put(url, self)
         unsaved_values = self.get_unsaved_values()

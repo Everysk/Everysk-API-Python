@@ -127,15 +127,9 @@ class EveryskList(list):
     def next_page_token(self):
         return self.__next_page_token
 
-def create_api_requestor():
-    #from everysk import api_entry, api_version, api_sid, api_token
-    api_entry, api_version, api_sid, api_token, verify_ssl_certs = get_api_config()
+def create_api_requestor(params={}):
     return api_requestor.APIRequestor(
-        api_entry,
-        api_version,
-        api_sid,
-        api_token,
-        verify_ssl_certs
+        *get_api_config(params)
     )
 
 def to_object(cls, retrieve_params, response):

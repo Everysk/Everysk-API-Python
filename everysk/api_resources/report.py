@@ -33,7 +33,7 @@ class Report(
     @classmethod
     def create(cls, debug_callback=None, **kwargs):
         debug_callback = (lambda x, y: None) if (debug_callback is None) else debug_callback
-        api_req = utils.create_api_requestor()
+        api_req = utils.create_api_requestor(kwargs)
         url = cls.class_url()
         response = api_req.post(url, kwargs)
         kwargs = {}
@@ -60,7 +60,7 @@ class Report(
         return result        
 
     def share(self, **kwargs):
-        api_req = utils.create_api_requestor()
+        api_req = utils.create_api_requestor(kwargs)
         url = '%s/%s/share' % (self.class_url(), self.get('id'))
         response = api_req.post(url, kwargs)
         data = response[self.class_name()]

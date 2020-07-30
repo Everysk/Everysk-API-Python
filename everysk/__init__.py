@@ -13,9 +13,33 @@ api_entry = 'https://api.everysk.com'
 api_version = 'v2'
 verify_ssl_certs = True
 
-def get_api_config():
-    global api_entry, api_version, api_sid, api_token, verify_ssl_certs
-    return (api_entry, api_version, api_sid, api_token, verify_ssl_certs)
+def get_api_config(params):
+    api_entry_ = params.get('api_entry', None)
+    if api_entry_ is None:
+      global api_entry
+      api_entry_ = api_entry
+
+    api_version_ = params.get('api_version', None)
+    if api_version_ is None:
+      global api_version
+      api_version_ = api_version
+
+    api_sid_ = params.get('api_sid', None)
+    if api_sid_ is None:
+      global api_sid
+      api_sid_ = api_sid
+
+    api_token_ = params.get('api_token', None)
+    if api_token_ is None:
+      global api_token
+      api_token_ = api_token
+
+    verify_ssl_certs_ = params.get('verify_ssl_certs', None)
+    if verify_ssl_certs_ is None:
+      global verify_ssl_certs
+      verify_ssl_certs_ = verify_ssl_certs
+
+    return (api_entry_, api_version_, api_sid_, api_token_, verify_ssl_certs_)
 
 from everysk.utils import *
 from everysk.api_resources import *
