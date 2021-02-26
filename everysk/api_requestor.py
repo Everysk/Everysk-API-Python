@@ -41,7 +41,6 @@ class APIRequestor(object):
             'Content-Type': 'application/json',
             'Authorization': 'Bearer %s:%s' % (api_sid, api_token),
             'User-Agent': 'Everysk PythonBindings/%s' % (api_version)
-
         }    
         self.base_url = '%s/%s' % (api_entry, api_version)
         self.client = http_client.new_default_http_client(timeout=60, verify_ssl_certs=verify_ssl_certs, allow_redirects=False)

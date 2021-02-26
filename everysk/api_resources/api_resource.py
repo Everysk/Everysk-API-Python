@@ -32,7 +32,7 @@ class APIResource(utils.EveryskObject):
     @classmethod
     def class_name_list(cls):
         cn = cls.class_name()
-        if cn[-1] == 's':
+        if cn[-1] in ('s', 'x'):
             cn += 'es'
         else:
             cn += 's'
