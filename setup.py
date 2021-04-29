@@ -1,8 +1,8 @@
 from setuptools import setup
 
-setup(name='everysk',
+setup(name='Everysk API',
       packages=['everysk', 'everysk.api_resources'],
-      version='0.1',
+      version='1.0',
       description='API from Everysk Technologies',
       author='Everysk Technologies',
       author_email='contact@everysk.com',
