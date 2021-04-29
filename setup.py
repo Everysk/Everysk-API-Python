@@ -1,9 +1,9 @@
 from setuptools import setup
 
-setup(name='Everysk API',
+setup(name='everysk',
       packages=['everysk', 'everysk.api_resources'],
       version='1.0',
-      description='API from Everysk Technologies',
+      description='Python client for Everysk API',
       author='Everysk Technologies',
       author_email='contact@everysk.com',
       url='https://github.com/Everysk/Everysk-API-Python',
