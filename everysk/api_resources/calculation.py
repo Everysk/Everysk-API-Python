@@ -36,6 +36,10 @@ class Calculation(APIResource):
     	return cls.__call_method('risk_attribution', **kwargs)
 
     @classmethod
+    def parametricRiskAttribution(cls, **kwargs):
+    	return cls.__call_method('parametric_risk_attribution', **kwargs)
+
+    @classmethod
     def stressTest(cls, **kwargs):
     	return cls.__call_method('stress_test', **kwargs)
 
