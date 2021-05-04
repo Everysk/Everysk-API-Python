@@ -15,6 +15,8 @@ import os.path
 
 try:
     import requests
+    from requests.packages.urllib3.exceptions import InsecureRequestWarning
+    requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 except ImportError:
     requests = None
 
@@ -60,6 +62,7 @@ class RequestsClient(HTTPClient):
         return
 
     def request(self, method, url, headers, params=None, payload=None):
+        
         response = requests.request(
             method,
             url,
