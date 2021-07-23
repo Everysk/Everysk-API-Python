@@ -18,11 +18,7 @@ class Parser(
 
     @classmethod
     def class_name(cls):
-        return 'parser'
-    
-    @classmethod
-    def class_url(cls):
-        return '/%s' % cls.class_name()        
+        return 'parser'     
 
     @classmethod
     def __call_method(cls, method, **kwargs):
@@ -31,6 +27,6 @@ class Parser(
         response = api_req.post(url, kwargs)
         return response
 
-    @parse
-    def parse(cls, **kwargs):
-        return cls.__call_method('parse', **kwargs)
+    @classmethod
+    def parse(cls, method, **kwargs):
+        return cls.__call_method( '%s/parse' % method, **kwargs)
