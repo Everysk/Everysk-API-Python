@@ -17,3 +17,4 @@ from everysk.api_resources.datastore import Datastore
 from everysk.api_resources.custom_index import CustomIndex
 from everysk.api_resources.calculation import Calculation
 from everysk.api_resources.market_data import MarketData
+from everysk.api_resources.parser import Parser
