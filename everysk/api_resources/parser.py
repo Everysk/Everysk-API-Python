@@ -18,7 +18,7 @@ class Parser(
 
     @classmethod
     def class_name(cls):
-        return 'parser'     
+        return 'parser'
 
     @classmethod
     def __call_method(cls, method, **kwargs):
