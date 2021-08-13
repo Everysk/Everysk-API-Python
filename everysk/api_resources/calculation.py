@@ -78,3 +78,7 @@ class Calculation(APIResource):
     @classmethod
     def optimize(cls, **kwargs):
         return cls.__call_method('optimize', **kwargs)
+
+    @classmethod
+    def marginalTrackingError(cls, **kwargs):
+        return cls.__call_method('marginal_tracking_error', **kwargs)
