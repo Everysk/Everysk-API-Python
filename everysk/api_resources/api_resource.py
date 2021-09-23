@@ -74,9 +74,12 @@ class ListableAPIResource(APIResource):
 
 class DeletableAPIResource(APIResource):
 
-    def delete(self, **kwargs):
-        api_req = utils.create_api_requestor(kwargs)
+    def delete(self):
+        api_req = utils.create_api_requestor()
         url = '%s/%s' % (self.class_url(), self.get('id'))
+        workspace = self.get('workspace', None)
+        if workspace:
+            url = '%s?workspace=%s' % (url, workspace)
         response = api_req.delete(url)
         data = response[self.class_name()]
         self.clear()
@@ -86,8 +89,11 @@ class DeletableAPIResource(APIResource):
 
     @classmethod
     def remove(cls, id, **kwargs):
-        api_req = utils.create_api_requestor(kwargs)
+        api_req = utils.create_api_requestor()
         url = '%s/%s' % (cls.class_url(), id)
+        workspace = kwargs('workspace', None)
+        if workspace:
+            url = '%s?workspace=%s' % (url, workspace)
         response = api_req.delete(url)
         data = response[cls.class_name()]
         return utils.to_object(cls, {}, response)
