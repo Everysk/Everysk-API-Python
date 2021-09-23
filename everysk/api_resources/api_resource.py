@@ -91,7 +91,7 @@ class DeletableAPIResource(APIResource):
     def remove(cls, id, **kwargs):
         api_req = utils.create_api_requestor()
         url = '%s/%s' % (cls.class_url(), id)
-        workspace = kwargs('workspace', None)
+        workspace = kwargs.get('workspace', None)
         if workspace:
             url = '%s?workspace=%s' % (url, workspace)
         response = api_req.delete(url)
