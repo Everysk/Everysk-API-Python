@@ -9,7 +9,7 @@
 ###############################################################################
 from everysk.api_resources.workspace import Workspace
 from everysk.api_resources.workflow import Workflow
-from everysk.api_resources.execution import Execution
+from everysk.api_resources.workflow_execution import WorkflowExecution
 from everysk.api_resources.portfolio import Portfolio
 from everysk.api_resources.report import Report
 from everysk.api_resources.report_template import ReportTemplate

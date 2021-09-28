@@ -15,7 +15,7 @@ from everysk.api_resources.api_resource import (
     CreateableAPIResource,
     UpdateableAPIResource
 )
-from everysk.api_resources.execution import Execution
+from everysk.api_resources.workflow_execution import WorkflowExecution
 
 from everysk import utils
 
@@ -37,7 +37,7 @@ class Report(
         url = cls.class_url()
         response = api_req.post(url, kwargs)
         kwargs = {}
-        proc = utils.to_object(Execution, kwargs, response)
+        proc = utils.to_object(WorkflowExecution, kwargs, response)
         debug_callback(0, proc)
 
         loop_sleep = 1

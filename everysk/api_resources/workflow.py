@@ -15,7 +15,7 @@ from everysk.api_resources.api_resource import (
     CreateableAPIResource,
     UpdateableAPIResource
 )
-from everysk.api_resources.execution import Execution
+from everysk.api_resources.workflow_execution import WorkflowExecution
 from everysk import utils
 
 class Workflow(
@@ -35,4 +35,4 @@ class Workflow(
         api_req = utils.create_api_requestor(kwargs)
         url = '%s/%s/run' % (cls.class_url(), id)
         response = api_req.post(url, kwargs)
-        return utils.to_object(cls, kwargs, response)
+        return utils.to_object(WorkflowExecution, kwargs, response)
