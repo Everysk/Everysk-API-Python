@@ -9,6 +9,7 @@
 ###############################################################################
 from everysk.api_resources.api_resource import (
     RetrievableAPIResource,
+    FilterAPIResource,
     ListableAPIResource,
     DeletableAPIResource,
     CreateableAPIResource,
@@ -17,6 +18,7 @@ from everysk.api_resources.api_resource import (
 
 class Portfolio(
     RetrievableAPIResource,
+    FilterAPIResource,
     ListableAPIResource,
     DeletableAPIResource,
     CreateableAPIResource,

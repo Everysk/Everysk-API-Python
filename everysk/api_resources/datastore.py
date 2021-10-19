@@ -9,6 +9,8 @@
 ###############################################################################
 from everysk.api_resources.api_resource import (
     RetrievableAPIResource,
+    FilterAPIResource,
+    ExplorerAPIResource,
     ListableAPIResource,
     DeletableAPIResource,
     CreateableAPIResource,
@@ -17,6 +19,8 @@ from everysk.api_resources.api_resource import (
 
 class Datastore(
     RetrievableAPIResource,
+    FilterAPIResource,
+    ExplorerAPIResource,
     ListableAPIResource,
     DeletableAPIResource,
     CreateableAPIResource,

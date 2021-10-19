@@ -42,6 +42,14 @@ class APIResource(utils.EveryskObject):
     def class_url(cls):
         return '/%s' % cls.class_name_list()
 
+    @classmethod
+    def class_url_filter(cls):
+        return '/%s/filter' % cls.class_name_list()
+
+    @classmethod
+    def class_url_explorer(cls):
+        return '/%s/explore' % cls.class_name_list()
+
 class RetrievableAPIResource(APIResource):
 
     @classmethod
@@ -50,6 +58,24 @@ class RetrievableAPIResource(APIResource):
         url = '%s/%s' % (cls.class_url(), id)
         response = api_req.get(url, kwargs)
         return utils.to_object(cls, kwargs, response)
+
+class FilterAPIResource(APIResource):
+
+    @classmethod
+    def filter(cls,**kwargs):
+        api_req = utils.create_api_requestor(kwargs)
+        url = cls.class_url_filter()
+        response = api_req.post(url, kwargs)
+        return utils.to_list(cls, kwargs, response)
+
+class ExplorerAPIResource(APIResource):
+
+    @classmethod
+    def explore(cls,**kwargs):
+        api_req = utils.create_api_requestor(kwargs)
+        url = cls.class_url_explorer()
+        response = api_req.post(url, kwargs)
+        return response
 
 class ListableAPIResource(APIResource):
 

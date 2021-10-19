@@ -117,7 +117,7 @@ class EveryskList(list):
     def __init__(self, retrieve_params, response, key, cls):
         super(EveryskList, self).__init__()
         self.__page_size = retrieve_params.get('page_size', 10)
-        self.__next_page_token = response['next_page_token']
+        self.__next_page_token = response.get('next_page_token', None)
         self.extend([cls({}, params) for params in response[key]])
         return
 

@@ -3,7 +3,7 @@ from setuptools import setup
 setup(name='everysk',
       packages=['everysk', 'everysk.api_resources'],
       package_data={'everysk': ['*.crt']},
-      version='1.0.7',
+      version='1.0.9',
       description='Python client for Everysk API',
       author='Everysk Technologies',
       author_email='contact@everysk.com',
