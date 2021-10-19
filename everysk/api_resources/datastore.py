@@ -15,6 +15,7 @@ from everysk.api_resources.api_resource import (
     UpdateableAPIResource,
     FilterableAPIResource
 )
+from everysk import utils
 
 class Datastore(
     RetrievableAPIResource,
