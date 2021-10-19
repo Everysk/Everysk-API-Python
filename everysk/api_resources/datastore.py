@@ -33,4 +33,4 @@ class Datastore(
         api_req = utils.create_api_requestor(kwargs)
         url = '/%s/explore' % cls.class_name_list()
         response = api_req.post(url, kwargs)
-        return utils.to_list(cls, kwargs, response)        
+        return response
