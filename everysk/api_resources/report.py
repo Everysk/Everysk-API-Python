@@ -7,57 +7,24 @@
 # without authorization of EVERYSK TECHNOLOGIES is prohibited.
 #
 ###############################################################################
-import time
 from everysk.api_resources.api_resource import (
     RetrievableAPIResource,
     ListableAPIResource,
     DeletableAPIResource,
-    CreateableAPIResource,
     UpdateableAPIResource
 )
 from everysk.api_resources.workflow_execution import WorkflowExecution
-
 from everysk import utils
 
 class Report(
     RetrievableAPIResource,
     ListableAPIResource,
     DeletableAPIResource,
-    CreateableAPIResource,
     UpdateableAPIResource
 ):
     @classmethod
     def class_name(cls):
-        return 'report'
-
-    @classmethod
-    def create(cls, debug_callback=None, **kwargs):
-        debug_callback = (lambda x, y: None) if (debug_callback is None) else debug_callback
-        api_req = utils.create_api_requestor(kwargs)
-        url = cls.class_url()
-        response = api_req.post(url, kwargs)
-        kwargs = {}
-        proc = utils.to_object(WorkflowExecution, kwargs, response)
-        debug_callback(0, proc)
-
-        loop_sleep = 1
-        loop_max = 700
-        loop_count = 0
-        done = ('completed', 'failed', 'timeout')
-        while proc.status not in done:
-            time.sleep(loop_sleep)
-            proc.refresh()
-            loop_count += 1
-            debug_callback(loop_count, proc)
-            if loop_count > loop_max:
-                raise Exception('max run loop achieved')
-        time.sleep(loop_sleep)
-        result = None
-        if proc.status in done:
-            result_ = proc.result
-            if result_['status'] == 'ok':
-                result = utils.to_object(Report, kwargs, {'report': result_['data']})
-        return result        
+        return 'report'  
 
     def share(self, **kwargs):
         api_req = utils.create_api_requestor(kwargs)

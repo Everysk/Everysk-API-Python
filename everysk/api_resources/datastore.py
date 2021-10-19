@@ -9,23 +9,29 @@
 ###############################################################################
 from everysk.api_resources.api_resource import (
     RetrievableAPIResource,
-    FilterAPIResource,
-    ExplorerAPIResource,
     ListableAPIResource,
     DeletableAPIResource,
     CreateableAPIResource,
-    UpdateableAPIResource
+    UpdateableAPIResource,
+    FilterableAPIResource
 )
+from everysk import utils
 
 class Datastore(
     RetrievableAPIResource,
-    FilterAPIResource,
-    ExplorerAPIResource,
     ListableAPIResource,
     DeletableAPIResource,
     CreateableAPIResource,
-    UpdateableAPIResource
+    UpdateableAPIResource,
+    FilterableAPIResource
 ):
     @classmethod
     def class_name(cls):
         return 'datastore'
+
+    @classmethod
+    def explore(cls, **kwargs):
+        api_req = utils.create_api_requestor(kwargs)
+        url = '/%s/explore' % cls.class_name_list()
+        response = api_req.post(url, kwargs)
+        return response
