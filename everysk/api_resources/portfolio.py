@@ -9,20 +9,20 @@
 ###############################################################################
 from everysk.api_resources.api_resource import (
     RetrievableAPIResource,
-    FilterAPIResource,
     ListableAPIResource,
     DeletableAPIResource,
     CreateableAPIResource,
-    UpdateableAPIResource
+    UpdateableAPIResource,
+    FilterableAPIResource
 )
 
 class Portfolio(
     RetrievableAPIResource,
-    FilterAPIResource,
     ListableAPIResource,
     DeletableAPIResource,
     CreateableAPIResource,
-    UpdateableAPIResource
+    UpdateableAPIResource,
+    FilterableAPIResource
 ):
     @classmethod
     def class_name(cls):

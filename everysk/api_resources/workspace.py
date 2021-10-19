@@ -7,7 +7,6 @@
 # without authorization of EVERYSK TECHNOLOGIES is prohibited.
 #
 ###############################################################################
-import time
 from everysk.api_resources.api_resource import (
     RetrievableAPIResource,
     ListableAPIResource,
