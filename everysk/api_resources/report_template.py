@@ -8,13 +8,17 @@
 #
 ###############################################################################
 from everysk.api_resources.api_resource import (
+    DeletableAPIResource,
     RetrievableAPIResource,
-    ListableAPIResource
+    ListableAPIResource,
+    UpdateableAPIResource
 )
 
 class ReportTemplate(
     RetrievableAPIResource,
-    ListableAPIResource
+    ListableAPIResource,
+    DeletableAPIResource,
+    UpdateableAPIResource
 ):
     @classmethod
     def class_name(cls):
