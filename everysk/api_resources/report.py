@@ -13,7 +13,6 @@ from everysk.api_resources.api_resource import (
     DeletableAPIResource,
     UpdateableAPIResource
 )
-from everysk.api_resources.workflow_execution import WorkflowExecution
 from everysk import utils
 
 class Report(
