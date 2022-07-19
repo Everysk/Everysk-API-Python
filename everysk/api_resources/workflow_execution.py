@@ -12,6 +12,7 @@ from everysk.api_resources.api_resource import (
     ListableAPIResource,
     DeletableAPIResource
 )
+from everysk import utils
 
 class WorkflowExecution(
     RetrievableAPIResource,
@@ -22,3 +23,9 @@ class WorkflowExecution(
     def class_name(cls):
         return 'workflow_execution'
 
+    @classmethod
+    def retrieve(cls, workflow_id, **kwargs):
+        api_req = utils.create_api_requestor(kwargs)
+        url = '/workflows/%s%s' % (workflow_id, cls.class_url())
+        response = api_req.get(url, kwargs)
+        return utils.to_object(WorkflowExecution, kwargs, response)
