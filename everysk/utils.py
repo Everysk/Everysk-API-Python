@@ -8,6 +8,7 @@
 #
 ###############################################################################
 import json
+import time
 from everysk import api_requestor, get_api_config
 from everysk import six
 
@@ -153,3 +154,5 @@ def to_list(cls, retrieve_params, response):
     #return [cls({}, params) for params in response[key]]
     return EveryskList(retrieve_params, response, key, cls)
 
+def sleep(t):
+    time.sleep(t)
