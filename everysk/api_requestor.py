@@ -7,7 +7,6 @@
 # without authorization of EVERYSK TECHNOLOGIES is prohibited.
 #
 ###############################################################################
-import os
 import json
 from everysk import http_client
 from everysk.six import python_2_unicode_compatible
@@ -32,11 +31,6 @@ class APIError(Exception):
 
 class APIRequestor(object):
     def __init__(self, api_entry, api_version, api_sid, api_token, verify_ssl_certs):
-
-        api_entry = os.getenv('EVERYSK_API_ENTRY', api_entry)
-        api_sid = os.getenv('EVERYSK_API_SID', api_sid)
-        api_token = os.getenv('EVERYSK_API_TOKEN', api_token)
-
         if not api_entry:
             raise Exception('Empty api_entry')
         if api_version != 'v2':
