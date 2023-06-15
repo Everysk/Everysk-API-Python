@@ -47,13 +47,20 @@ class APIRequestor(object):
         }
         self.base_url = '%s/%s' % (api_entry, api_version)
         self.client = http_client.new_default_http_client(
-            timeout=60, verify_ssl_certs=verify_ssl_certs, allow_redirects=False)
+            timeout=60,
+            verify_ssl_certs=verify_ssl_certs,
+            allow_redirects=False
+        )
         return
 
     def get(self, path, params):
         url = '%s%s' % (self.base_url, path)
         code, response = self.client.request(
-            'GET', url, headers=self.headers, params=params)
+            'GET',
+            url,
+            headers=self.headers,
+            params=params
+        )
         if code not in OK_STATUS_CODE:
             raise APIError(code, response)
         return json.loads(response)
@@ -61,7 +68,11 @@ class APIRequestor(object):
     def post(self, path, payload):
         url = '%s%s' % (self.base_url, path)
         code, response = self.client.request(
-            'POST', url, headers=self.headers, payload=payload)
+            'POST',
+            url,
+            headers=self.headers,
+            payload=payload
+        )
         if code not in OK_STATUS_CODE:
             raise APIError(code, response)
         return json.loads(response)
@@ -69,7 +80,10 @@ class APIRequestor(object):
     def delete(self, path):
         url = '%s%s' % (self.base_url, path)
         code, response = self.client.request(
-            'DELETE', url, headers=self.headers)
+            'DELETE',
+            url,
+            headers=self.headers
+        )
         if code not in OK_STATUS_CODE:
             raise APIError(code, response)
         return json.loads(response)
@@ -77,7 +91,11 @@ class APIRequestor(object):
     def put(self, path, payload):
         url = '%s%s' % (self.base_url, path)
         code, response = self.client.request(
-            'PUT', url, headers=self.headers, payload=payload)
+            'PUT',
+            url,
+            headers=self.headers,
+            payload=payload
+        )
         if code not in OK_STATUS_CODE:
             raise APIError(code, response)
         return json.loads(response)
