@@ -41,6 +41,10 @@ class MarketData(APIResource):
     @classmethod
     def symbolsPrice(cls, **kwargs):
     	return cls.__call_method('symbols_price', **kwargs)
+    
+    @classmethod
+    def symbolsRealtimePrice(cls, **kwargs):
+    	return cls.__call_method('symbols_real_time_prices', **kwargs)
 
     @classmethod
     def symbolsHistorical(cls, **kwargs):
