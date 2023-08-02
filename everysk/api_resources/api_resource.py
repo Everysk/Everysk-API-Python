@@ -34,6 +34,8 @@ class APIResource(utils.EveryskObject):
         cn = cls.class_name()
         if cn[-1] in ('s', 'x'):
             cn += 'es'
+        elif cn[-1] in ('y'):
+            cn = cn[:-1] + 'ies'
         else:
             cn += 's'
         return cn
