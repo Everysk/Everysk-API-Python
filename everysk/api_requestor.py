@@ -47,7 +47,7 @@ class APIRequestor(object):
         }
         self.base_url = '%s/%s' % (api_entry, api_version)
         self.client = http_client.new_default_http_client(
-            timeout=60,
+            timeout=3600,
             verify_ssl_certs=verify_ssl_certs,
             allow_redirects=False
         )

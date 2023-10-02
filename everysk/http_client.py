@@ -36,7 +36,7 @@ if not requests:
 
 
 class HTTPClient(object):
-    def __init__(self, timeout=60, verify_ssl_certs=True, allow_redirects=False):
+    def __init__(self, timeout=3600, verify_ssl_certs=True, allow_redirects=False):
         self.timeout = timeout
         self.allow_redirects = allow_redirects
         self.verify_ssl_certs = verify_ssl_certs
@@ -49,7 +49,7 @@ class HTTPClient(object):
 
 
 class RequestsClient(HTTPClient):
-    def __init__(self, timeout=60, verify_ssl_certs=True, allow_redirects=False):
+    def __init__(self, timeout=3600, verify_ssl_certs=True, allow_redirects=False):
         super(RequestsClient, self).__init__(timeout=timeout, verify_ssl_certs=verify_ssl_certs, allow_redirects=allow_redirects)
         if self.verify_ssl_certs:
             #https://curl.haxx.se/docs/caextract.html
@@ -77,7 +77,7 @@ class RequestsClient(HTTPClient):
 
 
 class Urllib2Client(HTTPClient):
-    def __init__(self, timeout=60, verify_ssl_certs=True, allow_redirects=False):
+    def __init__(self, timeout=3600, verify_ssl_certs=True, allow_redirects=False):
         super(Urllib2Client, self).__init__(timeout=timeout, verify_ssl_certs=verify_ssl_certs, allow_redirects=allow_redirects)
         return
 
